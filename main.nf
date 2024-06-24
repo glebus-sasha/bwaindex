@@ -7,7 +7,7 @@ include { FAINDEX }             from './processes/faindex.nf'
 // Logging pipeline information
 log.info """\
     ==========================================
-                B W A  I N D E X
+                R E F   I N D E X
     ==========================================
 
     reference:  ${params.reference}
