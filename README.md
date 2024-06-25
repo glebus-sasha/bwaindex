@@ -22,6 +22,13 @@ flowchart TB
     v2 --> v9
 ```
 
+## Description
+
+The pipeline is implemented in Nextflow and includes several stages for NGS data analysis:
+
+1. **REFINDEX:** Index creation using BWA (Burrows-Wheeler Aligner).
+2. **FAINDEX:** Fai index creation using Samtools faidx
+
 ## Usage
 
 ### Quick Start
