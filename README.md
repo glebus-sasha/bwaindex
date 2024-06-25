@@ -5,6 +5,23 @@ This pipeline is prepared for:
 - [glebus-sasha/deepvariant_nf](https://github.com/glebus-sasha/deepvariant_nf)
 - [glebus-sasha/octopus_nf](https://github.com/glebus-sasha/octopus_nf)
 
+```mermaid
+%%{init: {'theme':'base'}}%%
+flowchart TB
+    subgraph " "
+    v0["reference"]
+    end
+    v1([REFINDEX])
+    v2([FAINDEX])
+    subgraph " "
+    v9["indices"]
+    end
+    v0 --> v1
+    v0 --> v2
+    v1 --> v9
+    v2 --> v9
+```
+
 ## Usage
 
 ### Quick Start
