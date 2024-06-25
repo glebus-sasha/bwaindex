@@ -1,14 +1,14 @@
 #!/usr/bin/env nextflow
 
 // Include processes
-include { REFINDEX }            from './processes/refindex.nf'
-include { FAINDEX }             from './processes/faindex.nf'
+include { REFINDEX } from './processes/refindex.nf'
+include { FAINDEX }  from './processes/faindex.nf'
 
 // Logging pipeline information
 log.info """\
-    ==========================================
-                R E F   I N D E X
-    ==========================================
+\033[0;36m   ==========================================  \033[0m
+\033[0;36m                   R E F   I N D E X           \033[0m
+\033[0;36m   ==========================================  \033[0m
 
     reference:  ${params.reference}
     bwaidx:     ${params.bwaidx}
@@ -17,27 +17,29 @@ log.info """\
     .stripIndent(true)
 
 // Define help
-if ( params.help ) {
-    help = """main.nf: This repository contains a Nextflow pipeline for pipeline 
-            |for BWA index and samtools (fai) index
+if (params.help) {
+    help = """\
+            |main.nf: This repository contains a Nextflow pipeline for 
+            |BWA index and samtools (fai) index.
             |
             |Required arguments:
             |   --reference     Location of the reference file.
             |                   [default: ${params.reference}]
-            |   --bwaidx        Location of the output file file.
+            |   --bwaidx        Location of the output BWA index files.
             |                   [default: ${params.bwaidx}]
-            |   --faidx         Location of the output file file.
+            |   --faidx         Location of the output samtools index file.
             |                   [default: ${params.faidx}]
             |
             |Optional arguments:
             |   -profile        <docker/singularity>
             |
-""".stripMargin()
+            """.stripMargin()
     // Print the help with the stripped margin and exit
     println(help)
     exit(0)
 }
 
+// Define input channels
 reference = params.reference ? Channel.fromPath("${params.reference}", checkIfExists: true) : null
 
 // Define the workflow
@@ -55,13 +57,9 @@ workflow.onComplete {
         Duration    : ${workflow.duration}
         Success     : ${workflow.success}
         workDir     : ${workflow.workDir}
-        exit status : ${workflow.exitStatus}
+        Exit status : ${workflow.exitStatus}
         """
         .stripIndent()
         
-    log.info ( workflow.success ? "\nDone" : "\nOops" )
+    log.info (workflow.success ? "\nDone" : "\nOops")
 }
-
-
-
-
