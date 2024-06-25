@@ -12,7 +12,6 @@ flowchart TB
     v0["reference"]
     end
     v1([REFINDEX])
-    v11([DOWNLOAD_VEP_CACHE])
     v2([FAINDEX])
     subgraph " "
     v9["indices"]
