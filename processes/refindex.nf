@@ -3,7 +3,7 @@ process REFINDEX {
     container = 'glebusasha/bwa_samtools'
     tag "$reference"
     publishDir "$params.bwaidx/REFINDEX"
-    cpus params.cpus
+//  cpus params.cpus
 //	debug true
 //  errorStrategy 'ignore'
 

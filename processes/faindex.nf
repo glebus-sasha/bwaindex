@@ -3,7 +3,7 @@ process FAINDEX {
     container = 'glebusasha/bwa_samtools'
     tag "$reference"
     publishDir "$params.faidx/FAINDEX"
-    cpus params.cpus
+//    cpus params.cpus
 //	  debug true
 //    errorStrategy 'ignore'
 
