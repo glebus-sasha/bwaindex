@@ -2,7 +2,7 @@
 process REFINDEX {
     container = 'glebusasha/bwa_samtools'
     tag "$reference"
-    publishDir "$params.bwaidx/REFINDEX"
+    publishDir "$params.bwaidx/REFINDEX", mode: "copy"
 //	debug true
 //  errorStrategy 'ignore'
 
@@ -10,7 +10,8 @@ process REFINDEX {
     path reference
 
     output:
-    tuple path("${reference}.amb") path("${reference}.ann") path("${reference}.bwt") path("${reference}.pac") path("${reference}.sa"), emit: bwaidx
+    tuple path("*.amb") path("*.ann") path("*.bwt") path("*.pac") path("*.sa"), emit: bwaidx
+    // tuple path("${reference}.amb") path("${reference}.ann") path("${reference}.bwt") path("${reference}.pac") path("${reference}.sa"), emit: bwaidx
 
     script:
     """

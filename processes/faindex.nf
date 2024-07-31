@@ -2,7 +2,7 @@
 process FAINDEX {
     container = 'glebusasha/bwa_samtools'
     tag "$reference"
-    publishDir "$params.faidx/FAINDEX"
+    publishDir "$params.faidx/FAINDEX", mode: "copy"
 //	  debug true
 //    errorStrategy 'ignore'
 
